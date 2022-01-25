@@ -1,19 +1,27 @@
 pipeline {
     agent any
+    // need to use the names used in global config in jenkins
+    tools {
+        maven 'Maven-3.8.4'
+        jdk 'JDK'
+    }
     stages {
-        stage("build") {
+        // dont really need this first step other than to check
+        stage ('init-check') {
             steps {
-                echo 'building app'
+                echo '$M2_HOME'
+                echo '$JAVA_HOME'
             }
         }
-        stage("test") {
+        stage('build-test') {
             steps {
-                echo 'testing app'
+                sh 'mvn clean install'
+                echo 'build and tests done'
             }
         }
-        stage("deploy") {
+        stage("package") {
             steps {
-                echo 'deploying app'
+                echo 'build new docker image'
             }
         }
     }
