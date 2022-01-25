@@ -9,8 +9,8 @@ pipeline {
         // dont really need this first step other than to check
         stage ('init-check') {
             steps {
-                echo '$M2_HOME'
-                echo '$JAVA_HOME'
+                sh 'echo "M2_HOME = ${M2_HOME}"'
+                sh 'echo "JAVA_HOME = ${JAVA_HOME}"'
             }
         }
         stage('build-test') {
