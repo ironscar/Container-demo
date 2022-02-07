@@ -7,6 +7,21 @@
 - To stop container ```docker stop container-demo```
 - Access ```http://localhost:8080/container/demo/msg``` to see response
 
+### Setting up jenkins
+- run jenkins container as ``` docker run -d -p 8080:8080 -p 50000:50000 --name myjenkins2 --group-add $(stat -c '%g' /var/run/docker.sock) -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins ```
+- using group-add without a user adds the specified group to the declared user (by default no user implies root) of the container (not working so far as permission still denied)
+- the $(stat...) thing doesn't work on windows so try to get the group id of the group that has ownership of docker.sock and add that as value to group-add flag
+- Install plugins: Maven integration, Docker, Docker pipelines
+- Set up credentials for github and docker registry using manage credentials
+- Configure tools for jdk by specifying name as JDK (used in Jenkinsfile tools) & /opt/java/openjdk as JAVA_HOME
+- Configure maven by naming Maven-3.8.4 and choose to auto-install specific version
+- Configure docker by naming Docker-19.03.13 and choose to install from docker.com with version 19.03.13
+- Create multibranch pipeline and add git as branch source and specify repository url
+- Add credentials as created before
+- Add filter by regular expression for branches (for starters, just main branch)
+- Can configure docker below as well
+- On save changes, it will index and run build
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
