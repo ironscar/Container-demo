@@ -7,12 +7,20 @@
 - To stop container ```docker stop container-demo```
 - Access ```http://localhost:8080/container/demo/msg``` to see response
 
+### Progress so far
+- Able to create and publish docker image of spring boot project
+- Able to spin up jenkins container that builds/tests project, builds the docker image on host
+- Able to remove the docker image created by build job
+- Still not able to publish the image to dockerhub
+
 ### Setting up jenkins
 - run jenkins container as ``` docker run -d -p 8080:8080 -p 50000:50000 --name myjenkins2 --group-add $(stat -c '%g' /var/run/docker.sock) -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins ```
-- using group-add without a user adds the specified group to the declared user (by default no user implies root) of the container (not working so far as permission still denied)
-- the $(stat...) thing doesn't work on windows so try to get the group id of the group that has ownership of docker.sock and add that as value to group-add flag
+- windows should include a "//var/run/docker.sock" for the host
+- using group-add without a user adds the specified group to the declared user (by default no user implies root) of the container
+- the $(stat...) thing doesn't work on windows so try to get the group id of the group that has ownership of docker.sock and add that as value to group-add flag (generally 0)
 - Install plugins: Maven integration, Docker, Docker pipelines
 - Set up credentials for github and docker registry using manage credentials
+- registryCredential specified in environment of Jenkinsfile should specify same id as docker registry credential
 - Configure tools for jdk by specifying name as JDK (used in Jenkinsfile tools) & /opt/java/openjdk as JAVA_HOME
 - Configure maven by naming Maven-3.8.4 and choose to auto-install specific version
 - Configure docker by naming Docker-19.03.13 and choose to install from docker.com with version 19.03.13
