@@ -2,6 +2,7 @@ pipeline {
     environment {
         registry = 'ironscar/spring-boot-docker'
         registryCredential = 'docker-hub'
+        gitCredential = credentials('github-personal-token')
         dockerImage = ''
     }
     agent any
@@ -39,7 +40,7 @@ pipeline {
                     writeMavenPom model: pom
                 }
                 sh 'git commit -am "update: version update by jenkins"'
-                sh 'git push origin $BRANCH_NAME'
+                sh 'git push https://${gitCredential_PSW}@github.com/ironscar/Container-demo.git $BRANCH_NAME'
             }
         }
         stage("package") {
