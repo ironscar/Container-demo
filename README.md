@@ -2,7 +2,7 @@
 
 ### Container demo
 - Clean docker env with ```docker rm container-demo && docker rmi ironscar/spring-boot-docker```
-- Run ```mvn clean package && docker build -t ironscar/spring-boot-docker --build-arg VERSION=0.0.1 .``` to build image
+- Run ```mvn clean package && docker build -t ironscar/spring-boot-docker --build-arg VERSION=0.0.1-SNAPSHOT .``` to build image
 - Run container by ```docker run -d -p 8080:8081 --name container-demo ironscar/spring-boot-docker```
 - To stop container ```docker stop container-demo```
 - Access ```http://localhost:8080/container/demo/msg``` to see response
@@ -22,6 +22,7 @@
 - Set up credentials for github and docker registry using manage credentials
 - for github, also generate a personal access token from Settings > Developer settings > Personal access tokens (expires in some set time) and then create a new credential in jenkins with password as token
 - Setting this as a credential in jenkinsfile will give access to token as {credentialName}_PSW
+- Maange Jenkins > Configure System > git plugin config lets you set the name of the commit author so that jenkins commits can be differentiated
 - registryCredential specified in environment of Jenkinsfile should specify same id as docker registry credential
 - Configure tools for jdk by specifying name as JDK (used in Jenkinsfile tools) & /opt/java/openjdk as JAVA_HOME
 - Configure maven by naming Maven-3.8.4 and choose to auto-install specific version

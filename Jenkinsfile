@@ -27,7 +27,13 @@ pipeline {
         }
         stage('build-test') {
             steps {
-                sh 'git checkout $BRANCH_NAME && git pull origin $BRANCH_NAME'  
+                /*
+                 * need to checkout and pull here as otherwise it keeps complaining
+                 * that pull is up to date but push is behind remote etc
+                 */
+                sh 'git checkout $BRANCH_NAME && git pull origin $BRANCH_NAME'
+
+                // the script is to update version using Pipeline Utility Steps plugin
                 script {
                     def pom = readMavenPom()
                     pomVersion = pom.getVersion()
@@ -40,6 +46,12 @@ pipeline {
                     echo "${pomVersion}"
                     writeMavenPom model: pom
                 }
+
+                /*
+                 * run install after version update as otherwise dockerfile version will be wrong
+                 * target is going to have old version but it will try to read new version
+                 * but only push if install is successful
+                 */
                 sh 'mvn clean install'
                 sh 'git commit -am "update: version update by jenkins"'
                 sh 'git push https://${githubPeronalToken_PSW}@github.com/ironscar/Container-demo.git $BRANCH_NAME'
@@ -48,6 +60,7 @@ pipeline {
         stage("package") {
             steps {
                 script {
+                    // add the computed pom version here so that dockerfile picks correct files to copy
                     dockerImage = docker.build(registry + ':' + BUILD_NUMBER, '--build-arg VERSION=' + pomVersion + ' .')
                 }
             }
