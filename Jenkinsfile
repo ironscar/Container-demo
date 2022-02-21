@@ -2,6 +2,7 @@ pipeline {
     environment {
         registry = 'ironscar/spring-boot-docker'
         registryCredential = 'docker-hub'
+        gitCredential = credentials('github-personal-token')
         dockerImage = ''
     }
     agent any
@@ -26,11 +27,24 @@ pipeline {
         stage('build-test') {
             steps {
                 sh 'mvn clean install'
+                script {
+                    def pom = readMavenPom()
+                    pomVersion = pom.getVersion()
+                    echo "${pomVersion}"
+                    def versionList = pomVersion.tokenize(".")
+                    def majorVersion = versionList[0]
+                    def middleVersion = versionList[1]
+                    pomVersion = majorVersion + "." + middleVersion + "." + BUILD_NUMBER + "-SNAPSHOT"
+                    pom.version = pomVersion
+                    echo "${pomVersion}"
+                    writeMavenPom model: pom
+                }
+                sh 'git commit -am "update: version update by jenkins"'
+                sh 'git push https://${gitCredential_PSW}@github.com/ironscar/Container-demo.git $BRANCH_NAME'
             }
         }
         stage("package") {
             steps {
-                // needs docker daemon which currently cannot be connected to
                 script {
                     dockerImage = docker.build(registry + ':' + BUILD_NUMBER, '--build-arg VERSION=0.0.1 .')
                 }
@@ -38,11 +52,12 @@ pipeline {
         }
         stage("publish") {
             steps {
-                script {
-                    docker.withRegistry('', registryCredential) {
-                        dockerImage.push()
-                    }
-                }
+                // script {
+                //     docker.withRegistry('', registryCredential) {
+                //         dockerImage.push()
+                //     }
+                // }
+                sh 'echo "publish"'
             }
         }
         stage("clean up") {
