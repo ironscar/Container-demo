@@ -18,7 +18,7 @@
 - windows should include a "//var/run/docker.sock" for the host
 - using group-add without a user adds the specified group to the declared user (by default no user implies root) of the container
 - the $(stat...) thing doesn't work on windows so try to get the group id of the group that has ownership of docker.sock and add that as value to group-add flag (generally 0)
-- Install plugins: Maven integration, Docker, Docker pipelines
+- Install plugins: Maven integration, Docker, Docker pipelines, Pipeline utility steps
 - Set up credentials for github and docker registry using manage credentials
 - registryCredential specified in environment of Jenkinsfile should specify same id as docker registry credential
 - Configure tools for jdk by specifying name as JDK (used in Jenkinsfile tools) & /opt/java/openjdk as JAVA_HOME
