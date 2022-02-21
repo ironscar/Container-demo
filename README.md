@@ -20,7 +20,7 @@
 - the $(stat...) thing doesn't work on windows so try to get the group id of the group that has ownership of docker.sock and add that as value to group-add flag (generally 0)
 - Install plugins: Maven integration, Docker, Docker pipelines, Pipeline utility steps
 - Set up credentials for github and docker registry using manage credentials
-- for github, also generate a personal access token from Settings > Developer settings > Personal access tokens and then create a new credential in jenkins with password as token
+- for github, also generate a personal access token from Settings > Developer settings > Personal access tokens (expires in some set time) and then create a new credential in jenkins with password as token
 - Setting this as a credential in jenkinsfile will give access to token as {credentialName}_PSW
 - registryCredential specified in environment of Jenkinsfile should specify same id as docker registry credential
 - Configure tools for jdk by specifying name as JDK (used in Jenkinsfile tools) & /opt/java/openjdk as JAVA_HOME

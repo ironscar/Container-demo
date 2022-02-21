@@ -2,8 +2,9 @@ pipeline {
     environment {
         registry = 'ironscar/spring-boot-docker'
         registryCredential = 'docker-hub'
-        gitCredential = credentials('github-personal-token')
+        githubPeronalToken = credentials('github-personal-token')
         dockerImage = ''
+        pomVersion = ''
     }
     agent any
     // need to use the names used in global config in jenkins
@@ -26,6 +27,7 @@ pipeline {
         }
         stage('build-test') {
             steps {
+                sh 'git checkout $BRANCH_NAME && git pull $BRANCH_NAME'
                 sh 'mvn clean install'
                 script {
                     def pom = readMavenPom()
@@ -40,13 +42,13 @@ pipeline {
                     writeMavenPom model: pom
                 }
                 sh 'git commit -am "update: version update by jenkins"'
-                sh 'git push https://${gitCredential_PSW}@github.com/ironscar/Container-demo.git $BRANCH_NAME'
+                sh 'git push https://${githubPeronalToken_PSW}@github.com/ironscar/Container-demo.git $BRANCH_NAME'
             }
         }
         stage("package") {
             steps {
                 script {
-                    dockerImage = docker.build(registry + ':' + BUILD_NUMBER, '--build-arg VERSION=0.0.1 .')
+                    dockerImage = docker.build(registry + ':' + BUILD_NUMBER, '--build-arg VERSION=' + pomVersion + ' .')
                 }
             }
         }
