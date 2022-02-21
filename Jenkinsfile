@@ -27,8 +27,7 @@ pipeline {
         }
         stage('build-test') {
             steps {
-                sh 'git checkout $BRANCH_NAME && git pull $BRANCH_NAME'
-                sh 'mvn clean install'
+                sh 'git checkout $BRANCH_NAME && git pull origin $BRANCH_NAME'  
                 script {
                     def pom = readMavenPom()
                     pomVersion = pom.getVersion()
@@ -41,6 +40,7 @@ pipeline {
                     echo "${pomVersion}"
                     writeMavenPom model: pom
                 }
+                sh 'mvn clean install'
                 sh 'git commit -am "update: version update by jenkins"'
                 sh 'git push https://${githubPeronalToken_PSW}@github.com/ironscar/Container-demo.git $BRANCH_NAME'
             }
