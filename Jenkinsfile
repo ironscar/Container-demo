@@ -67,6 +67,7 @@ pipeline {
         }
         stage("publish") {
             steps {
+                // commented this due to it taking very long time
                 // script {
                 //     docker.withRegistry('', registryCredential) {
                 //         dockerImage.push()
