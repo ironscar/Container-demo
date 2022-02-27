@@ -7,9 +7,31 @@
 - To stop container ```docker stop container-demo```
 - Access ```http://localhost:8080/container/demo/msg``` to see response
 - ```docker push``` sometimes takes up to an hour and doesn't show the progress updates when on jenkins so have patience
+- The personal access token that jenkins uses to push to github may need to be recreated due to its expiration so check on that if it stops working
 
-### Progress so far
-- Able to create and publish docker image of spring boot project to dockerhub using jenkins job on a jenkins container
+### Target plan
+- create a Spring boot service and containerize it (done)
+  - write some actual test for project for next step (done)
+- create jenkins pipelines managed as code for it to run CI - https://technology.riotgames.com/news/thinking-inside-container (for productionizing jenkins)
+  - configure maven/docker (done)
+  - build & test (done)
+  - image build & push to registry (done)
+  - update pom minor version on each build to main and push to git using jenkins user (done)
+  - jenkins container volumes to save data and logging
+  - jenkins master slave scalable config as containers across different servers
+- check how to integrate config management tool like Ansible into job and deploy image as container to server
+- check how to externalize and change configurations on deployment
+- check how to change passwords at deployment without checking into git
+- setup jmeter for them to see how load testing works
+- setup sonarqube to check code quality
+- check how to gather logs from it using Prometheus etc and graph it
+- set up another project to act like microservices & repeat above
+- work on them together and see how things work in a cloud native environment
+- bring kubernetes into it to see what happens
+- check how to setup gitops
+- openstack/cloudstack to create your own cloud - https://cloud.google.com/blog/topics/developers-practitioners/can-you-make-openstack-more-interesting-cloud-natives-heres-how (for intro to openstack)
+- terraform on openstack/cloudstack to do automated version-controlled provisioning
+- set up all the above on top of openstack/cloudstack environment
 
 ### Setting up jenkins
 - create custom jenkins image with docker cli installation
