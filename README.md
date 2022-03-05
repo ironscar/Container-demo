@@ -10,14 +10,15 @@
 - The personal access token that jenkins uses to push to github may need to be recreated due to its expiration so check on that if it stops working
 
 ### Target plan
-- create a Spring boot service and containerize it (done)
+- create a Spring boot service
+  - containerize it (done)
   - write some actual test for project for next step (done)
 - create jenkins pipelines managed as code for it to run CI - https://technology.riotgames.com/news/thinking-inside-container (for productionizing jenkins)
   - configure maven/docker (done)
   - build & test (done)
   - image build & push to registry (done)
   - update pom minor version on each build to main and push to git using jenkins user (done)
-  - jenkins container volumes to save data and logging
+  - jenkins container volumes to save data and logging (done)
   - jenkins master slave scalable config as containers across different servers
 - check how to integrate config management tool like Ansible into job and deploy image as container to server
 - check how to externalize and change configurations on deployment
