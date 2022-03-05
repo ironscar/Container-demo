@@ -68,12 +68,11 @@ pipeline {
         stage("publish") {
             steps {
                 // commented this due to it taking very long time
-                // script {
-                //     docker.withRegistry('', registryCredential) {
-                //         dockerImage.push()
-                //     }
-                // }
-                sh 'echo "publish"'
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                    }
+                }
             }
         }
         stage("clean up") {
