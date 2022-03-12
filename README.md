@@ -21,6 +21,9 @@
   - jenkins container volumes to save data and logging (done)
   - jenkins master slave scalable config as containers across different servers
 - check how to integrate config management tool like Ansible into job and deploy image as container to server
+  - install ansible on vagrant (done)
+	- configure ansible to deploy docker images to VMs as containers
+	- create ansible docker image from python image if it makes sense
 - check how to externalize and change configurations on deployment
 - check how to change passwords at deployment without checking into git
 - setup jmeter for them to see how load testing works
@@ -29,6 +32,7 @@
 - set up another project to act like microservices & repeat above
 - work on them together and see how things work in a cloud native environment
 - bring kubernetes into it to see what happens
+- setup a service mesh like Linkerd/Istio for the microservices
 - check how to setup gitops
 - openstack/cloudstack to create your own cloud - https://cloud.google.com/blog/topics/developers-practitioners/can-you-make-openstack-more-interesting-cloud-natives-heres-how (for intro to openstack)
 - terraform on openstack/cloudstack to do automated version-controlled provisioning
