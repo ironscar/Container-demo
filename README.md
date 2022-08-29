@@ -23,9 +23,10 @@
 - check how to integrate config management tool like Ansible into job and deploy image as container to server
   - install ansible on vagrant (done)
 	- configure ansible to deploy docker images to VMs as containers
-	- create ansible docker image from python image if it makes sense
-- check how to externalize and change configurations on deployment
-- check how to change passwords at deployment without checking into git
+	- make it a part of the jenkins image to do this
+	- check how to externalize and change configurations on deployment
+	- check how to change passwords at deployment without checking into git
+	- try out ansible roles
 - setup jmeter for them to see how load testing works
 - setup sonarqube to check code quality
 - check how to gather logs from it using Prometheus etc and graph it
