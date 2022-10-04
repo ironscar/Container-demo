@@ -80,6 +80,7 @@ pipeline {
             steps {
                 // git fetch the ansible repo and run the playbook, remove it later
                 sh 'git clone https://${githubPeronalToken_PSW}@github.com/ironscar/vagrant-debian-bullseye.git'
+                sh 'git checkout feature/ansible-integration-v1'
                 sh 'cd vagrant-debian-bullseye/ansible-learning'
                 sh 'ansible-playbook -i inventory.yml docker_playbook.yml'
             }
