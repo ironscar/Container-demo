@@ -9,6 +9,17 @@
 - ```docker push``` for the first online image takes up to an hour and doesn't show the progress updates when on jenkins so have patience, subsequent pushes are much faster due to cached layers
 - The personal access token that jenkins uses to push to github may need to be recreated due to its expiration so check on that if it stops working
 
+### Jenkinsfile details
+
+- It will first checkout the branch, get the pom version and calculate the build version
+- it will do a clean install so as to build and run tests
+- It will update the pom file and push it to the repo
+- Then, it builds the new docker image with a tag same as the pom version
+- After that, it pushes the new image to registry
+- In the deployment step, it clones the ansible repo into the current directory and runs a playbook
+  - Need to check how to send the docker image tag in playbook as an argument
+- In cleanup step, it deletes the ansible repo cloned and also removes the docker image
+
 ### Target plan
 - create a Spring boot service
   - containerize it (done)
