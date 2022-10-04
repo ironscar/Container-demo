@@ -87,7 +87,7 @@ pipeline {
         }
         stage("clean up") {
             steps {
-                sh 'cd .. && rm -rf vagrant-debian-bullseye'
+                sh 'cd ../.. && rm -rf vagrant-debian-bullseye'
                 sh 'docker rmi $registry:$BUILD_NUMBER'
             }
         }
