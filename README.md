@@ -17,6 +17,7 @@
 - Then, it builds the new docker image with a tag same as the pom version
 - After that, it pushes the new image to registry
 - In the deployment step, it clones the ansible repo into the current directory and runs a playbook
+  - `cd` command doesn't work in `sh` so we may have to give relative paths to the inventory and playbook files
   - Need to check how to send the docker image tag in playbook as an argument
 - In cleanup step, it deletes the ansible repo cloned and also removes the docker image
 

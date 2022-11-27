@@ -67,26 +67,24 @@ pipeline {
         }
         stage("publish") {
             steps {
-                // commented this due to it taking very long time
-                // script {
-                //     docker.withRegistry('', registryCredential) {
-                //         dockerImage.push()
-                //     }
-                // }
-                sh 'echo "publish step"'
+                // commented this due to it taking very long time for first time
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                    }
+                }
             }
         }
         stage("deploy") {
             steps {
                 // git fetch the ansible repo and run the playbook, remove it later
                 sh 'git clone https://${githubPeronalToken_PSW}@github.com/ironscar/vagrant-debian-bullseye.git'
-                sh 'cd vagrant-debian-bullseye/ansible-learning'
-                sh 'ansible-playbook -i inventory.yml docker_playbook.yml'
+                sh 'ansible-playbook -i vagrant-debian-bullseye/ansible-learning/inventory.yml vagrant-debian-bullseye/ansible-learning/docker_playbook.yml'
             }
         }
         stage("clean up") {
             steps {
-                sh 'cd ../.. && rm -rf vagrant-debian-bullseye'
+                sh 'rm -rf vagrant-debian-bullseye'
                 sh 'docker rmi $registry:$BUILD_NUMBER'
             }
         }
