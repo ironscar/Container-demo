@@ -20,6 +20,8 @@
   - Need to check how to send the docker image tag in playbook as an argument
 - In cleanup step, it deletes the ansible repo cloned and also removes the docker image
 
+- **todo** - need to check if ansible repo already exists at a top-level location and just git pull, else git clone (if failures happen, it may clone twice and give errors if already exists etc)
+
 ### Target plan
 - create a Spring boot service
   - containerize it (done)
