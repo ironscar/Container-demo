@@ -18,10 +18,11 @@
 - After that, it pushes the new image to registry
 - In the deployment step, it clones the ansible repo into the current directory and runs a playbook
   - `cd` command doesn't work in `sh` so we may have to give relative paths to the inventory and playbook files
-  - Need to check how to send the docker image tag in playbook as an argument
 - In cleanup step, it deletes the ansible repo cloned and also removes the docker image
 
-- **todo** - need to check if ansible repo already exists at a top-level location and just git pull, else git clone (if failures happen, it may clone twice and give errors if already exists etc)
+- **todo** 
+  - need to check if ansible repo already exists at a top-level location and just git pull, else git clone (if failures happen, it may clone twice and give errors if already exists etc)
+  - Need to check how to send the docker image tag in playbook as an argument
 
 ### Target plan
 - create a Spring boot service
@@ -38,7 +39,7 @@
   - install ansible on vagrant (done)
 	- configure ansible to deploy docker images to VMs as containers (done)
 	- add ansible to jenkins container image (done)
-	- integrate ansible into jenkins build pipeline with ssh key automation
+	- integrate ansible into jenkins build pipeline with ssh key automation (done)
   - check how to externalize and change configurations on deployment
   - check how to change passwords at deployment without checking into git
   - try out ansible roles
