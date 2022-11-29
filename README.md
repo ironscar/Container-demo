@@ -23,7 +23,7 @@
 - **todo** 
   - need to check if ansible repo already exists at a top-level location and just git pull, else git clone (if failures happen, it may clone twice and give errors if already exists etc)
   - need to check how to do different environment deployments like direct deployment in stage and exact version deployment in prod (latter is done)
-  - Need to check how to remove older docker container and image when making version updates on app servers
+  - Need to check how to remove older docker container and image when making version updates on app servers (former is auto-handled but not the latter)
   
 
 ### Target plan
