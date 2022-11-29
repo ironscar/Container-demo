@@ -50,11 +50,10 @@ pipeline {
                 /*
                  * run install after version update as otherwise dockerfile version will be wrong
                  * target is going to have old version but it will try to read new version
-                 * but only push if install is successful
+                 * commit version update if install is successful
                  */
                 sh 'mvn clean install'
                 sh 'git commit -am "update: version update by jenkins"'
-                sh 'git push https://${githubPeronalToken_PSW}@github.com/ironscar/Container-demo.git $BRANCH_NAME'
             }
         }
         stage("package") {
@@ -67,25 +66,45 @@ pipeline {
         }
         stage("publish") {
             steps {
-                // commented this due to it taking very long time for first time
+                // can comment this due to it taking very long time for first time
                 script {
-                    docker.withRegistry('', registryCredential) {
-                        dockerImage.push()
+                    try {
+                        docker.withRegistry('', registryCredential) {
+                            dockerImage.push()
+                        }
+
+                        // push version update commit
+                        sh 'git push https://${githubPeronalToken_PSW}@github.com/ironscar/Container-demo.git $BRANCH_NAME'
+                    } catch (err) {
+                        echo "Failed publish: ${err}"
+
+                        // reset branch to remote branch
+                        sh 'git reset --hard origin/$BRANCH_NAME'
+
+                        // so that next step doesn't continue
+                        throw err;
+                    } finally {
+                        sh 'docker rmi $registry:$BUILD_NUMBER'
                     }
                 }
             }
         }
         stage("deploy") {
             steps {
-                // git fetch the ansible repo and run the playbook, remove it later
-                sh 'git clone https://${githubPeronalToken_PSW}@github.com/ironscar/vagrant-debian-bullseye.git'
-                sh 'ansible-playbook -i vagrant-debian-bullseye/ansible-learning/inventory.yml vagrant-debian-bullseye/ansible-learning/docker_playbook.yml'
-            }
-        }
-        stage("clean up") {
-            steps {
-                sh 'rm -rf vagrant-debian-bullseye'
-                sh 'docker rmi $registry:$BUILD_NUMBER'
+                script {
+                    try {
+                        // git fetch the ansible repo and run the playbook, remove it later
+                        sh 'git clone https://${githubPeronalToken_PSW}@github.com/ironscar/vagrant-debian-bullseye.git'
+                        sh 'ansible-playbook -i vagrant-debian-bullseye/ansible-learning/inventory.yml vagrant-debian-bullseye/ansible-learning/docker_playbook.yml'    
+                    } catch (err) {
+                        echo "Failed deploy: ${err}"
+
+                        // so that next step doesn't continue
+                        throw err;
+                    } finally {
+                        sh 'rm -rf vagrant-debian-bullseye'
+                    }
+                }
             }
         }
     }
