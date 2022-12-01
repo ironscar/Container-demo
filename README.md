@@ -22,7 +22,6 @@
 
 - **todo** 
   - need to check how to do different environment deployments like direct deployment in stage and exact version deployment in prod (latter is done)
-  - Need to check how to remove older docker container and image when making version updates on app servers (former is auto-handled but not the latter)
 
 ### Target plan
 - create a Spring boot service
