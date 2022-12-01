@@ -71,6 +71,9 @@ pipeline {
                     try {
                         docker.withRegistry('', registryCredential) {
                             dockerImage.push()
+
+                            // allows pushing same image with different tag
+                            dockerImage.push('snapshot')
                         }
 
                         // push version update commit
