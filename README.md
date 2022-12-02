@@ -18,10 +18,9 @@
 - After that, it pushes the new image to registry
 - In the deployment step, it clones the ansible repo into the current directory and runs a playbook
   - `cd` command doesn't work in `sh` so we may have to give relative paths to the inventory and playbook files
+  - The inventory file is dynamically chosen based on which branch was updated (`snapshot` branch uses `stage` inventory and `main` branch uses `prod` inventory)
 - In cleanup step, it deletes the ansible repo cloned and also removes the docker image
-
-- **todo** 
-  - need to check how to do different environment deployments like direct deployment in stage and exact version deployment in prod (latter is done)
+- includes some try catch blocks so that it can cleanup on failures too
 
 ### Target plan
 - create a Spring boot service
