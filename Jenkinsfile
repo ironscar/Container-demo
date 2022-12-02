@@ -104,13 +104,13 @@ pipeline {
 
                         // test which inventory file to run based on the branch run
                         script {
-                            swtich(BRANCH_NAME) {
-                                case "snapshot": 
+                            switch(BRANCH_NAME) {
+                                case 'snapshot': 
                                     sh 'ansible-playbook -i ${ansibleSnapshotDir}/inventory.yml ${ansiblePlaybookDir}/docker_playbook.yml'
-                                    break;
-                                case "main":
+                                    break
+                                case 'main':
                                     sh 'ansible-playbook -i ${ansibleMainDir}/inventory.yml ${ansiblePlaybookDir}/docker_playbook.yml'
-                                    break;
+                                    break
                                 default: 
                                     echo 'No matching branch'
                             }
