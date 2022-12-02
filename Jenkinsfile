@@ -5,6 +5,9 @@ pipeline {
         githubPeronalToken = credentials('github-personal-token')
         dockerImage = ''
         pomVersion = ''
+        ansibleMainDir = 'vagrant-debian-bullseye/ansible-learning/envs/prod'
+        ansibleSnapshotDir = 'vagrant-debian-bullseye/ansible-learning/envs/stage'
+        ansiblePlaybookDir = 'vagrant-debian-bullseye/ansible-learning/playbooks'
     }
     agent any
     // need to use the names used in global config in jenkins
@@ -98,7 +101,20 @@ pipeline {
                     try {
                         // git fetch the ansible repo and run the playbook, remove it later
                         sh 'git clone https://${githubPeronalToken_PSW}@github.com/ironscar/vagrant-debian-bullseye.git'
-                        sh 'ansible-playbook -i vagrant-debian-bullseye/ansible-learning/inventory.yml vagrant-debian-bullseye/ansible-learning/docker_playbook.yml'    
+
+                        // test which inventory file to run based on the branch run
+                        script {
+                            switch(BRANCH_NAME) {
+                                case 'snapshot': 
+                                    sh 'ansible-playbook -i ${ansibleSnapshotDir}/inventory.yml ${ansiblePlaybookDir}/docker_playbook.yml'
+                                    break
+                                case 'main':
+                                    sh 'ansible-playbook -i ${ansibleMainDir}/inventory.yml ${ansiblePlaybookDir}/docker_playbook.yml'
+                                    break
+                                default: 
+                                    echo 'No matching branch'
+                            }
+                        }
                     } catch (err) {
                         echo "Failed deploy: ${err}"
 
