@@ -47,6 +47,7 @@ class DemoApplicationTests {
 		RequestEntity<Void> request = RequestEntity.get("http://localhost:" + port + "/container/demo/msg")
             .accept(MediaType.APPLICATION_JSON).build();
 		Map<String, String> responseMap = restTemplate.exchange(request, responseType).getBody();
+		assertNotNull(responseMap);
 		assertEquals(responseMap.size(), 3);
 	}
 

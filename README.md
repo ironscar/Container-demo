@@ -9,6 +9,8 @@
 - ```docker push``` for the first online image takes up to an hour and doesn't show the progress updates when on jenkins so have patience, subsequent pushes are much faster due to cached layers
 - The personal access token that jenkins uses to push to github may need to be recreated due to its expiration so check on that if it stops working
 
+---
+
 ### Jenkinsfile details
 
 - It will first checkout the branch, get the pom version and calculate the build version
@@ -21,6 +23,19 @@
   - The inventory file is dynamically chosen based on which branch was updated (`snapshot` branch uses `stage` inventory and `main` branch uses `prod` inventory)
 - In cleanup step, it deletes the ansible repo cloned and also removes the docker image
 - includes some try catch blocks so that it can cleanup on failures too
+
+---
+
+### External config management
+
+- create a config class that reads env property values and changes response
+- read props and add default values using `${:}` in case env property doesn't exist
+  - caveat: must restart vscode every time env variable is changed on system
+- [TODO] build local docker container that takes env file with all required properties
+- [TODO] put all properties in the `app_stage` and `app_prod` yml files for ansible
+- [TODO] read all said properties in `docker_playbook` yml using `env` like in https://unix.stackexchange.com/questions/534240/ansible-docker-container-module-how-to-pass-variables-in-environment-section
+
+---
 
 ### Target plan
 - create a Spring boot service
