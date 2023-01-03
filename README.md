@@ -43,7 +43,8 @@
   - try out ansible roles
 - setup jmeter for them to see how load testing works
 - setup sonarqube to check code quality
-- check how to gather logs from it using Prometheus etc and graph it
+- check how to gather logs from it using Prometheus etc and graph it in Grafana etc
+- check how to setup checkmk or icinga for infrastructure & app monitoring
 - set up another project to act like microservices & repeat above
 - work on them together and see how things work in a cloud native environment
 - bring kubernetes into it to see what happens
