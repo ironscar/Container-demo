@@ -34,7 +34,6 @@
 - put all properties in the `app_stage` and `app_prod` yml files for ansible
 - read all said properties in `docker_playbook` yml using `env`
   - can check `echo $app_sbd_prop1` inside running container prints its value
-- [ISSUE] spring boot project not reading env props in docker container
 
 ---
 
