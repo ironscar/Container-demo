@@ -31,9 +31,10 @@
 - create a config class that reads env property values and changes response
 - read props and add default values using `${:}` in case env property doesn't exist
   - caveat: must restart vscode every time env variable is changed on system
-- [TODO] build local docker container that takes env file with all required properties
-- [TODO] put all properties in the `app_stage` and `app_prod` yml files for ansible
-- [TODO] read all said properties in `docker_playbook` yml using `env` like in https://unix.stackexchange.com/questions/534240/ansible-docker-container-module-how-to-pass-variables-in-environment-section
+- put all properties in the `app_stage` and `app_prod` yml files for ansible
+- read all said properties in `docker_playbook` yml using `env`
+  - can check `echo $app_sbd_prop1` inside running container prints its value
+- [ISSUE] spring boot project not reading env props in docker container
 
 ---
 
