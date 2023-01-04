@@ -25,7 +25,7 @@ public class DemoController {
     public Map<String, String> getMessages() {
         Map<String, String> map = new HashMap<>();
 
-        log.info("external properties = " + externalPropHolder.toString());
+        log.info("external properties now = " + externalPropHolder.toString());
         String customPrefix = ("custom").equals(externalPropHolder.getProp1()) ? externalPropHolder.getProp2() : "";
 
         for (int i = 1; i <= 3; i++) {
