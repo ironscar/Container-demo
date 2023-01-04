@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.container.demo.domain.ExternalPropHolder;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
@@ -21,6 +24,8 @@ public class DemoController {
     @GetMapping("/msg")
     public Map<String, String> getMessages() {
         Map<String, String> map = new HashMap<>();
+
+        log.info("external props = " + externalPropHolder.toString());
         String customPrefix = ("custom").equals(externalPropHolder.getProp1()) ? externalPropHolder.getProp2() : "";
 
         for (int i = 1; i <= 3; i++) {
