@@ -62,7 +62,8 @@
 	- add ansible to jenkins container image (done)
 	- integrate ansible into jenkins build pipeline with ssh key automation (done)
   - check how to externalize and change configurations on deployment (done)
-  - check how to change passwords at deployment without checking into git (done)
+  - check how to change passwords at deployment without checking directly into git (done)
+  - check how to auto-restart apps when config/passwords are updated on ansible repo
   - try out ansible roles
 - setup jmeter for them to see how load testing works
 - setup sonarqube to check code quality
