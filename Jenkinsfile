@@ -110,12 +110,12 @@ pipeline {
                         script {
                             switch(BRANCH_NAME) {
                                 case 'snapshot': 
-                                    writeFile(file: 'password-file' text: '${ansibleStageVaultPass_PSW}')
+                                    writeFile(file: 'password-file', text: '${ansibleStageVaultPass_PSW}')
                                     sh 'ansible-playbook -i ${ansibleSnapshotDir}/inventory.yml --vault-id stage_vault@password-file ${ansiblePlaybookDir}/docker_playbook.yml'
                                     sh 'rm password-file'
                                     break
                                 case 'main':
-                                    writeFile(file: 'password-file' text: '${ansibleProdVaultPass_PSW}')
+                                    writeFile(file: 'password-file', text: '${ansibleProdVaultPass_PSW}')
                                     sh 'ansible-playbook -i ${ansibleMainDir}/inventory.yml --vault-id prod_vault@password-file ${ansiblePlaybookDir}/docker_playbook.yml'
                                     sh 'rm password-file'
                                     break
