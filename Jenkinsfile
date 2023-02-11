@@ -75,11 +75,12 @@ pipeline {
                 script {
                     try {
                         docker.withRegistry('', registryCredential) {
-                            dockerImage.push()
 
                             // allows pushing same image with different tag if branch is snapshot
                             if (BRANCH_NAME == 'snapshot') {
                                 dockerImage.push('snapshot')
+                            } else {
+                                dockerImage.push()
                             }
                         }
 
