@@ -3,6 +3,8 @@ pipeline {
         registry = 'ironscar/spring-boot-docker'
         registryCredential = 'docker-hub'
         githubPeronalToken = credentials('github-personal-token')
+        ansibleStageVaultPass = credentials('ansible-sbd-stage-vault-pass')
+        ansibleProdVaultPass = credentials('ansible-sbd-prod-vault-pass')
         dockerImage = ''
         pomVersion = ''
         ansibleMainDir = 'vagrant-debian-bullseye/ansible-learning/envs/prod'
@@ -73,11 +75,12 @@ pipeline {
                 script {
                     try {
                         docker.withRegistry('', registryCredential) {
-                            dockerImage.push()
 
                             // allows pushing same image with different tag if branch is snapshot
                             if (BRANCH_NAME == 'snapshot') {
                                 dockerImage.push('snapshot')
+                            } else {
+                                dockerImage.push()
                             }
                         }
 
@@ -108,10 +111,12 @@ pipeline {
                         script {
                             switch(BRANCH_NAME) {
                                 case 'snapshot': 
-                                    sh 'ansible-playbook -i ${ansibleSnapshotDir}/inventory.yml ${ansiblePlaybookDir}/docker_playbook.yml'
+                                    writeFile(file: 'password-file', text: ansibleStageVaultPass_PSW)
+                                    sh 'ansible-playbook -i ${ansibleSnapshotDir}/inventory.yml --vault-id stage_vault@password-file ${ansiblePlaybookDir}/docker_playbook.yml'
                                     break
                                 case 'main':
-                                    sh 'ansible-playbook -i ${ansibleMainDir}/inventory.yml ${ansiblePlaybookDir}/docker_playbook.yml'
+                                    writeFile(file: 'password-file', text: ansibleProdVaultPass_PSW)
+                                    sh 'ansible-playbook -i ${ansibleMainDir}/inventory.yml --vault-id prod_vault@password-file ${ansiblePlaybookDir}/docker_playbook.yml'
                                     break
                                 default: 
                                     echo 'No matching branch'
@@ -124,6 +129,7 @@ pipeline {
                         throw err;
                     } finally {
                         sh 'rm -rf vagrant-debian-bullseye'
+                        sh 'rm -f password-file'
                     }
                 }
             }

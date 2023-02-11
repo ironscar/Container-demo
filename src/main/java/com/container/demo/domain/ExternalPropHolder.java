@@ -9,5 +9,6 @@ public class ExternalPropHolder {
 
     private String prop1;
     private String prop2;
+    private String pass;
     
 }

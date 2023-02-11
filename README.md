@@ -23,10 +23,11 @@
   - The inventory file is dynamically chosen based on which branch was updated (`snapshot` branch uses `stage` inventory and `main` branch uses `prod` inventory)
 - In cleanup step, it deletes the ansible repo cloned and also removes the docker image
 - includes some try catch blocks so that it can cleanup on failures too
+- best practice is not to use try catch blocks but with the `post` block [TODO]
 
 ---
 
-### External config management
+### External config & password management
 
 - create a config class that reads env property values and changes response
 - read props and add default values using `${:}` in case env property doesn't exist
@@ -34,6 +35,13 @@
 - put all properties in the `app_stage` and `app_prod` yml files for ansible
 - read all said properties in `docker_playbook` yml using `env`
   - can check `echo $app_sbd_prop1` inside running container prints its value
+- include a property encryped by ansible-vault which is `app_sbd_pass`
+  - it gets passed the same way here though
+- jenkinsfile needs a way to get the vault password to use it
+  - add credentials for ansible stage and prod vault passwords
+  - writing a file with the password stored in jenkins
+  - using this file as `ansible-playbook -i {inventory.yml} --vault-id {vaultId}@password-file {playbook.yml}`
+  - deleting the password file
 
 ---
 
@@ -53,8 +61,9 @@
 	- configure ansible to deploy docker images to VMs as containers (done)
 	- add ansible to jenkins container image (done)
 	- integrate ansible into jenkins build pipeline with ssh key automation (done)
-  - check how to externalize and change configurations on deployment
-  - check how to change passwords at deployment without checking into git
+  - check how to externalize and change configurations on deployment (done)
+  - check how to change passwords at deployment without checking directly into git (done)
+  - check how to auto-restart apps when config/passwords are updated on ansible repo
   - try out ansible roles
 - setup jmeter for them to see how load testing works
 - setup sonarqube to check code quality
