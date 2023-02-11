@@ -23,6 +23,7 @@
   - The inventory file is dynamically chosen based on which branch was updated (`snapshot` branch uses `stage` inventory and `main` branch uses `prod` inventory)
 - In cleanup step, it deletes the ansible repo cloned and also removes the docker image
 - includes some try catch blocks so that it can cleanup on failures too
+- best practice is not to use try catch blocks but with the `post` block [TODO]
 
 ---
 
@@ -34,6 +35,16 @@
 - put all properties in the `app_stage` and `app_prod` yml files for ansible
 - read all said properties in `docker_playbook` yml using `env`
   - can check `echo $app_sbd_prop1` inside running container prints its value
+- include a property encryped by ansible-vault which is `app_sbd_pass`
+  - it gets passed the same way here though
+
+- jenkinsfile needs a way to get the vault password to use it [TODO]
+  - add credentials for ansible stage and prod vault passwords
+  - writing a file with the password stored in jenkins
+  - using this file as `ansible-playbook -i {inventory.yml} --vault-id {vaultId}@password-file {playbook.yml}`
+  - deleting the password file
+  - password file still remains active for a little while though but is that a security concern
+  - jenkins allows creating secret files as a credential so that could be an option [CHECK]
 
 ---
 
