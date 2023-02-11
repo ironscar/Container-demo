@@ -27,7 +27,7 @@
 
 ---
 
-### External config management
+### External config & password management
 
 - create a config class that reads env property values and changes response
 - read props and add default values using `${:}` in case env property doesn't exist
@@ -37,14 +37,11 @@
   - can check `echo $app_sbd_prop1` inside running container prints its value
 - include a property encryped by ansible-vault which is `app_sbd_pass`
   - it gets passed the same way here though
-
-- jenkinsfile needs a way to get the vault password to use it [TODO]
+- jenkinsfile needs a way to get the vault password to use it
   - add credentials for ansible stage and prod vault passwords
   - writing a file with the password stored in jenkins
   - using this file as `ansible-playbook -i {inventory.yml} --vault-id {vaultId}@password-file {playbook.yml}`
   - deleting the password file
-  - password file still remains active for a little while though but is that a security concern
-  - jenkins allows creating secret files as a credential so that could be an option [CHECK]
 
 ---
 
@@ -64,8 +61,8 @@
 	- configure ansible to deploy docker images to VMs as containers (done)
 	- add ansible to jenkins container image (done)
 	- integrate ansible into jenkins build pipeline with ssh key automation (done)
-  - check how to externalize and change configurations on deployment
-  - check how to change passwords at deployment without checking into git
+  - check how to externalize and change configurations on deployment (done)
+  - check how to change passwords at deployment without checking into git (done)
   - try out ansible roles
 - setup jmeter for them to see how load testing works
 - setup sonarqube to check code quality
