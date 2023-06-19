@@ -46,25 +46,32 @@
 ---
 
 ### Target plan
+
+#### Completed
+
 - create a Spring boot service
-  - containerize it (done)
-  - write some actual test for project for next step (done)
-- create jenkins pipelines managed as code for it to run CI - https://technology.riotgames.com/news/thinking-inside-container (for productionizing jenkins)
-  - configure maven/docker (done)
-  - build & test (done)
-  - image build & push to registry (done)
-  - update pom minor version on each build to main and push to git using jenkins user (done)
-  - jenkins container volumes to save data and logging (done)
-  - jenkins master slave scalable config as containers across different servers
-- check how to integrate config management tool like Ansible into job and deploy image as container to server
-  - install ansible on vagrant (done)
-	- configure ansible to deploy docker images to VMs as containers (done)
-	- add ansible to jenkins container image (done)
-	- integrate ansible into jenkins build pipeline with ssh key automation (done)
-  - check how to externalize and change configurations on deployment (done)
-  - check how to change passwords at deployment without checking directly into git (done)
-  - check how to auto-restart apps when config/passwords are updated on ansible repo
-  - try out ansible roles
+	- containerize it
+	- write some actual test for project for next step
+- create jenkins pipelines managed as code for it to run CI
+	- configure maven/docker
+	- build & test
+	- image build & push to registry
+	- update pom minor version on each build to main and push to git using jenkins user
+	- jenkins container volumes, logging
+	- jenkins master slave scalable config as containers across different servers
+- check how to integrate Ansible into job and deploy image as container to server
+	- install ansible on vagrant
+	- configure ansible to deploy docker images to VMs as containers
+	- add ansible to jenkins container image
+	- integrate ansible into jenkins build pipeline
+	- check how to externalize and change configurations on deployment
+	- check how to change passwords at deployment without checking into git
+
+#### Todo
+
+- test end-to-end on all completed items first [NOW]
+- jenkins master slave scalable config as containers across different servers
+- check how to setup DB for apps
 - setup jmeter for them to see how load testing works
 - setup sonarqube to check code quality
 - check how to gather logs from it using Prometheus etc and graph it in Grafana etc
@@ -72,11 +79,19 @@
 - set up another project to act like microservices & repeat above
 - work on them together and see how things work in a cloud native environment
 - bring kubernetes into it to see what happens
-- setup a service mesh like Linkerd/Istio for the microservices
+- Setup a service mesh like Linkerd/Istio for the microservices
 - check how to setup gitops
 - openstack/cloudstack to create your own cloud - https://cloud.google.com/blog/topics/developers-practitioners/can-you-make-openstack-more-interesting-cloud-natives-heres-how (for intro to openstack)
-- terraform on openstack/cloudstack to do automated version-controlled provisioning
-- set up all the above on top of openstack/cloudstack environment
+- pulumi/terraform on openstack/cloudstack to do automated version-controlled provisioning
+- to setup all the above on openstack/cloudstack/ovirt environment
+
+#### Optional
+
+- setup ansible semaphore UI into jenkins-ansible image if makes sense
+- check how to rotate ssh keys without rebuilding docker image
+- update spring boot project to latest version and use jdk 17 alpine image if available
+
+---
 
 ### Reference Documentation
 For further reference, please consider the following sections:
@@ -93,3 +108,5 @@ The following guides illustrate how to use some features concretely:
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+
+---
