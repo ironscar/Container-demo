@@ -97,8 +97,10 @@ pipeline {
                     } finally {
                         sh 'docker rmi $registry:$BUILD_NUMBER'
 
-                        // we need this because it seems pushing it with different tag actually creates the image as well which we ought to cleanup
-                        sh 'docker rmi $registry:snapshot'
+                        if (BRANCH_NAME == 'snapshot') {
+                            // we need this because it seems pushing it with different tag actually creates the image as well which we ought to cleanup
+                            sh 'docker rmi $registry:snapshot'
+                        }
                     }
                 }
             }
