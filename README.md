@@ -69,7 +69,6 @@
 
 #### Todo
 
-- test end-to-end on all completed items first [NOW]
 - jenkins master slave scalable config as containers across different servers
 - check how to setup DB for apps
 - setup jmeter for them to see how load testing works
