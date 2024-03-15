@@ -66,10 +66,10 @@
 	- integrate ansible into jenkins build pipeline
 	- check how to externalize and change configurations on deployment
 	- check how to change passwords at deployment without checking into git
+- jenkins master slave scalable config as containers across different servers
 
 #### Todo
 
-- jenkins master slave scalable config as containers across different servers
 - check how to setup DB for apps
 - setup jmeter for them to see how load testing works
 - setup sonarqube to check code quality
