@@ -70,6 +70,7 @@
 
 #### Todo
 
+- update spring boot project to latest version and use jdk 17 alpine image if available
 - check how to setup DB for apps
 - setup jmeter for them to see how load testing works
 - setup sonarqube to check code quality
@@ -88,7 +89,6 @@
 
 - setup ansible semaphore UI into jenkins-ansible image if makes sense
 - check how to rotate ssh keys without rebuilding docker image
-- update spring boot project to latest version and use jdk 17 alpine image if available
 
 ---
 
