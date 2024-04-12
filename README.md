@@ -67,10 +67,11 @@
 	- check how to externalize and change configurations on deployment
 	- check how to change passwords at deployment without checking into git
 - jenkins master slave scalable config as containers across different servers
+- update spring boot project to latest version and use jdk 17 alpine image
+    - has db container in separate VM but DB deployment is not automated yet  
 
 #### Todo
 
-- update spring boot project to latest version and use jdk 17 alpine image if available
 - check how to setup DB for apps
 - setup jmeter for them to see how load testing works
 - setup sonarqube to check code quality
