@@ -29,7 +29,7 @@ public class DemoController {
         String customPrefix = ("custom").equals(externalPropHolder.getProp1()) ? externalPropHolder.getProp2() : "";
 
         for (int i = 1; i <= 3; i++) {
-            map.put("key" + i, customPrefix + "value" + i + ": " + new Date().toString());
+            map.put("key" + i, customPrefix + "value" + i + ": :" + new Date().toString());
         }
 
         return map;
