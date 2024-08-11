@@ -68,23 +68,39 @@
 	- check how to change passwords at deployment without checking into git
 - jenkins master slave scalable config as containers across different servers
 - update spring boot project to latest version and use jdk 17 alpine image
-    - has db container in separate VM but DB deployment is not automated yet  
+    - has db container in separate VM but DB deployment is not automated yet
 
 #### Todo
 
-- check how to setup DB for apps
+- set up another project to act like microservices for below:
+	1. SQL Hibernate/Mybatis [DONE]
+	2. Spring webflux with SQL R2DBC [DONE]
+	3. NoSQL
+		1. Redis (CP key-value)
+		2. Cassandra (AP columnar)
+		3. MongoDB (CP document)
+		4. Neo4j (CA Graph)
+	4. Queue/Streams
+		1. Rabbit MQ
+		2. Apache Kafka
+	5. Service communication
+		1. GraphQL
+		2. GRPC
+		3. Sockets
+	6. Batch jobs & Emails
+- check how to do CI/CD for DB for apps
 - setup jmeter for them to see how load testing works
-- setup sonarqube to check code quality
 - check how to gather logs from it using Prometheus etc and graph it in Grafana etc
 - check how to setup checkmk or icinga for infrastructure & app monitoring
-- set up another project to act like microservices & repeat above
 - work on them together and see how things work in a cloud native environment
+- setup sonarqube to check code quality and something for security
 - bring kubernetes into it to see what happens
 - Setup a service mesh like Linkerd/Istio for the microservices
 - check how to setup gitops
-- openstack/cloudstack to create your own cloud - https://cloud.google.com/blog/topics/developers-practitioners/can-you-make-openstack-more-interesting-cloud-natives-heres-how (for intro to openstack)
+- to setup own cloud on openstack/cloudstack/ovirt 
+  - Refer https://cloud.google.com/blog/topics/developers-practitioners/can-you-make-openstack-more-interesting-cloud-natives-heres-how (for intro to openstack)
 - pulumi/terraform on openstack/cloudstack to do automated version-controlled provisioning
-- to setup all the above on openstack/cloudstack/ovirt environment
+- setup end-to-end developer platform on above
 
 #### Optional
 
