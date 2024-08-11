@@ -73,22 +73,26 @@
 #### Todo
 
 - set up another project to act like microservices for below:
-	1. SQL Hibernate/Mybatis [DONE]
-	2. Spring webflux with SQL R2DBC [DONE]
-	3. NoSQL
-		1. Redis (CP key-value)
-		2. Cassandra (AP columnar)
-		3. MongoDB (CP document)
+	1. SQL (CA Relational) [DONE]
+		1. Web + Hibernate
+		2. Web + Mybatis
+		3. Webflux + R2DBC
+	2. NoSQL
+		1. Redis (CP Key-value)
+		2. ScyllaDB (AP Columnar)
+		3. MongoDB (CP Document)
 		4. Neo4j (CA Graph)
-	4. Queue/Streams
+		5. Vector DB [SELECT]
+	3. Queue/Streams
 		1. Rabbit MQ
 		2. Apache Kafka
-	5. Service communication
+	4. Service communication
 		1. GraphQL
 		2. GRPC
 		3. Sockets
-	6. Batch jobs & Emails
-- check how to do CI/CD for DB for apps
+		4. WebRTC
+	5. Batch jobs & Emails
+- check how to do CI/CD for DBs and queue/streams
 - setup jmeter for them to see how load testing works
 - check how to gather logs from it using Prometheus etc and graph it in Grafana etc
 - check how to setup checkmk or icinga for infrastructure & app monitoring
