@@ -92,7 +92,8 @@
 		3. Sockets
 		4. WebRTC
 	5. Batch jobs & Emails
-- check how to do CI/CD for DBs and queue/streams
+- setup sharded/partitioned SQL and NoSQL to see how things work
+- setup CI/CD for DBs and queue/streams
 - setup jmeter for them to see how load testing works
 - check how to gather logs from it using Prometheus etc and graph it in Grafana etc
 - check how to setup checkmk or icinga for infrastructure & app monitoring
