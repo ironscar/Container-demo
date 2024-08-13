@@ -73,31 +73,41 @@
 #### Todo
 
 - set up another project to act like microservices for below:
-	1. SQL (CA Relational) [DONE]
-		1. Web + Hibernate
-		2. Web + Mybatis
-		3. Webflux + R2DBC
-	2. NoSQL
+	1. SQL (CA Relational)
+		1. Technologies [DONE]
+			1. Web + Hibernate
+			2. Web + Mybatis
+			3. Webflux + R2DBC
+		2. Data engineering
+			1. Sharded/Partitioned SQL
+			2. Indexes in SQL
+			3. PL/SQL, batch jobs & ETL pipelines in SQL
+			4. DBA tasks in SQL
+		3. Devops
+			1. Setup CI/CD for SQL
+	2. NoSQL (tech + data engineering + devops)
 		1. Redis (CP Key-value)
 		2. ScyllaDB (AP Columnar)
 		3. MongoDB (CP Document)
 		4. Neo4j (CA Graph)
 		5. Vector DB [SELECT]
-	3. Queue/Streams
+	3. Queue/Streams (tech + devops)
 		1. Rabbit MQ
 		2. Apache Kafka
 	4. Service communication
 		1. GraphQL
 		2. GRPC
 		3. Sockets
-		4. WebRTC
-	5. Batch jobs & Emails
-- setup sharded/partitioned SQL and NoSQL to see how things work
-- setup CI/CD for DBs and queue/streams
+		4. SMTP
+		5. SFTP
+		6. WebRTC
+	5. Microservices
+		1. Spring Cloud
+		2. Spring Security
+- work on them together and see how things work in a cloud native environment
 - setup jmeter for them to see how load testing works
 - check how to gather logs from it using Prometheus etc and graph it in Grafana etc
 - check how to setup checkmk or icinga for infrastructure & app monitoring
-- work on them together and see how things work in a cloud native environment
 - setup sonarqube to check code quality and something for security
 - bring kubernetes into it to see what happens
 - Setup a service mesh like Linkerd/Istio for the microservices
