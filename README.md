@@ -78,30 +78,29 @@
 			1. Web + Hibernate
 			2. Web + Mybatis
 			3. Webflux + R2DBC
-		2. Data engineering
-			1. Sharded/Partitioned SQL
-			2. Indexes in SQL
-			3. PL/SQL, batch jobs & ETL pipelines in SQL
-			4. DBA tasks in SQL
+		2. Database management
+			1. Indexes in SQL
+			2. DBA tasks in SQL
+     			3. Sharded/Partitioned SQL
 		3. Devops
 			1. Setup CI/CD for SQL
-	2. NoSQL (tech + data engineering + devops)
-		1. Redis (CP Key-value)
+	2. NoSQL (tech + database management + devops)
+		1. DragonflyDB (CP Key-value)
 		2. ScyllaDB (AP Columnar)
 		3. MongoDB (CP Document)
 		4. Neo4j (CA Graph)
-		5. Vector DB [SELECT]
-	3. Queue/Streams (tech + devops)
+     	3. Batch/Schedulers (tech + management + devops)
+         	1. Apache Airflow
+             	2. Apache Spark
+	4. Queue/Streams (tech + management + devops)
 		1. Rabbit MQ
 		2. Apache Kafka
-	4. Service communication
+     		3. Apache Flink
+	5. Service communication
 		1. GraphQL
 		2. GRPC
 		3. Sockets
-		4. SMTP
-		5. SFTP
-		6. WebRTC
-	5. Microservices
+	6. Microservices
 		1. Spring Cloud
 		2. Spring Security
 - work on them together and see how things work in a cloud native environment
@@ -121,6 +120,8 @@
 
 - setup ansible semaphore UI into jenkins-ansible image if makes sense
 - check how to rotate ssh keys without rebuilding docker image
+- look into SMTP/SFTP/WebRTC
+- look into VectorDBs/Timeseries DBs
 
 ---
 
