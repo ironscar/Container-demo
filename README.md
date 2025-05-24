@@ -89,8 +89,8 @@
 		2. ScyllaDB (AP Columnar)
 		3. MongoDB (CP Document)
 		4. Neo4j (CA Graph) or Nebula Graph (AP Graph)
-  	3. OLAP database
-  	   	1. Clickhouse (Columnar)
+  	3. OLAP
+  	   	1. Apache iceberg
   	4. Batch/Schedulers (tech + management + devops)
   		1. Apache Airflow
   	 	2. Apache Spark
