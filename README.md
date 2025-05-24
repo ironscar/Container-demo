@@ -88,7 +88,7 @@
 		1. DragonflyDB (CP Key-value)
 		2. ScyllaDB (AP Columnar)
 		3. MongoDB (CP Document)
-		4. Neo4j (CA Graph)
+		4. Neo4j (CA Graph) or Nebula Graph (AP Graph)
   	3. Batch/Schedulers (tech + management + devops)
   		1. Apache Airflow
   	 	2. Apache Spark
