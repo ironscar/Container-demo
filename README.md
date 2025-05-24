@@ -81,7 +81,7 @@
 		2. Database management
 			1. Indexes in SQL
 			2. DBA tasks in SQL
-     			3. Sharded/Partitioned SQL
+   			3. Sharded/Partitioned SQL
 		3. Devops
 			1. Setup CI/CD for SQL
 	2. NoSQL (tech + database management + devops)
@@ -89,18 +89,18 @@
 		2. ScyllaDB (AP Columnar)
 		3. MongoDB (CP Document)
 		4. Neo4j (CA Graph)
-     	3. Batch/Schedulers (tech + management + devops)
-         	1. Apache Airflow
-             	2. Apache Spark
-	4. Queue/Streams (tech + management + devops)
+  	3. Batch/Schedulers (tech + management + devops)
+  		1. Apache Airflow
+  	 	2. Apache Spark
+	5. Queue/Streams (tech + management + devops)
 		1. Rabbit MQ
 		2. Apache Kafka
-     		3. Apache Flink
-	5. Service communication
+  		3. Apache Flink
+	6. Service communication
 		1. GraphQL
 		2. GRPC
 		3. Sockets
-	6. Microservices
+	7. Microservices
 		1. Spring Cloud
 		2. Spring Security
 - work on them together and see how things work in a cloud native environment
