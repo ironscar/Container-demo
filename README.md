@@ -89,19 +89,19 @@
 		2. ScyllaDB (AP Columnar)
 		3. MongoDB (CP Document)
 		4. Neo4j (CA Graph) or Nebula Graph (AP Graph)
-  	3. OLAP
-  	   	1. Apache iceberg
-  	4. Batch/Schedulers (tech + management + devops)
+  	3. Batch/Schedulers (tech + management + devops)
   		1. Apache Airflow
   	 	2. Apache Spark
-	5. Queue/Streams (tech + management + devops)
+	4. Queue/Streams (tech + management + devops)
 		1. Rabbit MQ
 		2. Apache Kafka
   		3. Apache Flink
-	6. Service communication
+	5. Service communication
 		1. GraphQL
 		2. GRPC
 		3. Sockets
+  	6. Big Data + OLAP
+  	   	1. Apache iceberg (using Spark)
 	7. Microservices
 		1. Spring Cloud
 		2. Spring Security
