@@ -72,51 +72,8 @@
 
 #### Todo
 
-- set up another project to act like microservices for below:
-	1. SQL (CA Relational)
-		1. Technologies [DONE]
-			1. Web + Hibernate
-			2. Web + Mybatis
-			3. Webflux + R2DBC
-		2. Database management
-			1. Indexes in SQL
-			2. DBA tasks in SQL
-   			3. Sharded/Partitioned SQL
-		3. Devops
-			1. Setup CI/CD for SQL
-	2. NoSQL (tech + database management + devops)
-		1. DragonflyDB (CP Key-value)
-		2. ScyllaDB (AP Columnar)
-		3. MongoDB (CP Document)
-		4. Neo4j (CA Graph) or Nebula Graph (AP Graph)
-  	3. Batch/Schedulers (tech + management + devops)
-  		1. Apache Airflow
-  	 	2. Apache Spark
-	4. Queue/Streams (tech + management + devops)
-		1. Rabbit MQ
-		2. Apache Kafka
-  		3. Apache Flink
-	5. Service communication
-		1. GraphQL
-		2. GRPC
-		3. Sockets
-  	6. Big Data + OLAP
-  	   	1. Apache iceberg (using Spark)
-	7. Microservices
-		1. Spring Cloud
-		2. Spring Security
-- work on them together and see how things work in a cloud native environment
-- setup jmeter for them to see how load testing works
-- check how to gather logs from it using Prometheus etc and graph it in Grafana etc
-- check how to setup checkmk or icinga for infrastructure & app monitoring
-- setup sonarqube to check code quality and something for security
-- bring kubernetes into it to see what happens
-- Setup a service mesh like Linkerd/Istio for the microservices
-- check how to setup gitops
-- to setup own cloud on openstack/cloudstack/ovirt 
-  - Refer https://cloud.google.com/blog/topics/developers-practitioners/can-you-make-openstack-more-interesting-cloud-natives-heres-how (for intro to openstack)
-- pulumi/terraform on openstack/cloudstack to do automated version-controlled provisioning
-- setup end-to-end developer platform on above
+- Refer to https://roadmap.sh/r/cloud-development-roadmap for next learning items
+- Build a Developer Cloud Platform based on this roadmap
 
 #### Optional
 
