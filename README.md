@@ -78,66 +78,51 @@
 			1. Web + Hibernate
 			2. Web + Mybatis
 			3. Webflux + R2DBC
-		2. Data engineering
-			1. Sharded/Partitioned SQL
-			2. Indexes in SQL
-			3. PL/SQL, batch jobs & ETL pipelines in SQL
-			4. DBA tasks in SQL
-		3. Devops
+		2. Devops
 			1. Setup CI/CD for SQL
 	2. NoSQL (tech + data engineering + devops)
-		1. Redis (CP Key-value)
+		1. DragonflyDB (CP Key-value)
 		2. ScyllaDB (AP Columnar)
 		3. MongoDB (CP Document)
 		4. Neo4j (CA Graph)
-		5. Vector DB [SELECT]
-	3. Queue/Streams (tech + devops)
-		1. Rabbit MQ
-		2. Apache Kafka
-	4. Service communication
+		5. Ceph (CP Object/Block/File)
+    3. Streaming (tech + devops)
+        1. Rabbit MQ
+        2. Apache Kafka
+        3. Event-based architectures
+	4. Data engineering (tech + devops)
+		1. Apache Airflow
+		2. Apache Spark
+		3. Apache Flink
+		4. Apache Iceberg (big data)
+	5. Service communication
 		1. GraphQL
 		2. GRPC
 		3. Sockets
 		4. SMTP
 		5. SFTP
 		6. WebRTC
-	5. Microservices
+	6. Microservices
 		1. Spring Cloud
 		2. Spring Security
-- work on them together and see how things work in a cloud native environment
-- setup jmeter for them to see how load testing works
-- check how to gather logs from it using Prometheus etc and graph it in Grafana etc
-- check how to setup checkmk or icinga for infrastructure & app monitoring
-- setup sonarqube to check code quality and something for security
-- bring kubernetes into it to see what happens
-- Setup a service mesh like Linkerd/Istio for the microservices
-- check how to setup gitops
-- to setup own cloud on openstack/cloudstack/ovirt 
-  - Refer https://cloud.google.com/blog/topics/developers-practitioners/can-you-make-openstack-more-interesting-cloud-natives-heres-how (for intro to openstack)
-- pulumi/terraform on openstack/cloudstack to do automated version-controlled provisioning
-- setup end-to-end developer platform on above
+		3. DevOps (include Sonar for code quality and something for vulnerabilities)
+    7. Monitoring & Testing 
+        1. Jmeter performance testing
+        2. Application monitoring stack (Prometheus stack / OpenTelemetry / Jaeger)
+        3. Infrastructure monitoring stack (checkMK/Icinga)
+        4. Chaos testing
+    8. Full cloud native migration
+        1. Migrate to Kubernetes
+        2. GitOps with Argo
+        3. Service mesh with Linkerd/Istio
+    9. Infrastructure automation
+        1. Openstack / Cloudstack / OVirt (Refer https://cloud.google.com/blog/topics/developers-practitioners/can-you-make-openstack-more-interesting-cloud-natives-heres-how for openstack)
+        2. Pulumi / Terraform (IaC)
+    10. End-to-end Developer platform
 
 #### Optional
 
 - setup ansible semaphore UI into jenkins-ansible image if makes sense
 - check how to rotate ssh keys without rebuilding docker image
-
----
-
-### Reference Documentation
-For further reference, please consider the following sections:
-
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.6.2/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.6.2/maven-plugin/reference/html/#build-image)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.6.2/reference/htmlsingle/#using-boot-devtools)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.6.2/reference/htmlsingle/#boot-features-developing-web-applications)
-
-### Guides
-The following guides illustrate how to use some features concretely:
-
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 
 ---
