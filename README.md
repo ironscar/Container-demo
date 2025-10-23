@@ -72,7 +72,7 @@
 
 #### Todo
 
-- Refer to https://roadmap.sh/r/cloud-development-roadmap and make updates as per below plan
+- Refer to https://roadmap.sh/r/cloud-development-roadmap for overall plan
 
 #### Optional
 
