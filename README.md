@@ -73,53 +73,6 @@
 #### Todo
 
 - Refer to https://roadmap.sh/r/cloud-development-roadmap and make updates as per below plan
-- set up another project to act like microservices for below:
-	1. SQL (CA Relational)
-		1. Technologies [DONE]
-			1. Web + Hibernate
-			2. Web + Mybatis
-			3. Webflux + R2DBC
-		2. Devops
-			1. Setup CI/CD for SQL
-	2. NoSQL (tech + data engineering + devops)
-		1. DragonflyDB (CP Key-value)
-		2. ScyllaDB (AP Columnar)
-		3. MongoDB (CP Document)
-		4. Neo4j (CA Graph)
-		5. Ceph (CP Object/Block/File)
-    3. Streaming (tech + devops)
-        1. Rabbit MQ
-        2. Apache Kafka
-        3. Event-based architectures
-	4. Data engineering (tech + devops)
-		1. Apache Airflow
-		2. Apache Spark
-		3. Apache Flink
-		4. Apache Iceberg (big data)
-	5. Service communication
-		1. GraphQL
-		2. GRPC
-		3. Sockets
-		4. SMTP
-		5. SFTP
-		6. WebRTC
-	6. Microservices
-		1. Spring Cloud
-		2. Spring Security
-		3. DevOps (include Sonar for code quality and something for vulnerabilities)
-    7. Monitoring & Testing 
-        1. Jmeter performance testing
-        2. Application monitoring stack (Prometheus stack / OpenTelemetry / Jaeger)
-        3. Infrastructure monitoring stack (checkMK/Icinga)
-        4. Chaos testing
-    8. Full cloud native migration
-        1. Migrate to Kubernetes
-        2. GitOps with Argo
-        3. Service mesh with Linkerd/Istio
-    9. Infrastructure automation
-        1. Openstack / Cloudstack / OVirt (Refer https://cloud.google.com/blog/topics/developers-practitioners/can-you-make-openstack-more-interesting-cloud-natives-heres-how for openstack)
-        2. Pulumi / Terraform (IaC)
-    10. End-to-end Developer platform
 
 #### Optional
 
